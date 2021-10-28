@@ -1,18 +1,18 @@
-DROP DATABASE IF EXISTS orgcharts;
-CREATE DATABASE orgcharts;
+DROP DATABASE IF EXISTS orgcharts_db;
+CREATE DATABASE orgcharts_db;
 
-USE orgcharts;
+USE orgcharts_db;
 
 CREATE TABLE department (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE roles (
+CREATE TABLE role (
     id INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
     salary DECIMAL NOT NULL,
-    department_id INT,
+    department_id INT NOT NULL,
     FOREIGN KEY (department_id)
     REFERENCES department(id)
     ON DELETE SET NULL
