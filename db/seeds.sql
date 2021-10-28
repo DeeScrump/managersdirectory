@@ -24,14 +24,16 @@ VALUES
 INSERT INTO employee
     (first_name, last_name, role_id, manager_id)
 VALUES
-    ('John', 'Doe', 1, NULL),
-    ('Mike', 'Chan', 2, 1),
-    ('Ashley', 'Rodriguez', 3, NULL),
-    ('Kevin', 'Tupik', 4, 3),
-    ('Kunal', 'Singh', 5, NULL),
-    ('Malia', 'Brown', 6, 5),
-    ('Sarah', 'Lourd', 7, NULL),
-    ('Tom', 'Allen', 8, 7);
+    ('Ash', 'Asher', 1, NULL),
+    ('Barb', 'Bailey', 2, 1),
+    ('Cat', 'Casey', 3, NULL),
+    ('Don', 'Dudley', 4, 3),
+    ('Erica', 'Evers', 5, NULL),
+    ('Fanny', 'Foxtrot', 6, 5),
+    ('Gar', 'Garrett', 7, NULL),
+    ('Hanna', 'Hensley', 8, 7);
+
+
 
 
 -- INSERT INTO department (name)
@@ -42,7 +44,8 @@ VALUES
 --        ('Operations');
 
 -- INSERT INTO role (title, salary, department_id)
--- VALUES ('Manager', 150000, 1),
+-- VALUES 
+--        ('Manager', 150000, 1),
 --        ('Intern', 30000, 2),
 --        ('Associate Engineer', 75000, 3),
 --        ('Training Leader', 50000, 4),

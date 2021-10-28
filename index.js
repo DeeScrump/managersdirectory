@@ -1,7 +1,7 @@
 const db = require('./db');
 const mysql = require('mysql2');
 const { prompt } = require('inquirer');
-const { getEmployees, getRoles, createDepartment, createRole, createEmployee, updateEmployeeRole, updateEmployeeManager, removeDepartment, removeRole, removeEmployee } = require('./db');
+// const { getEmployees, getRoles, createDepartment, createRole, createEmployee, updateEmployeeRole, updateEmployeeManager, removeDepartment, removeRole, removeEmployee } = require('./db');
 require('console.table');
 
 init();
@@ -73,46 +73,46 @@ function defaultQuestions() {
       ]
     }
   ]).then(res => {
-      let option = res.option;
+    let option = res.choice;
 
-      switch (option) {
-        case "VAD":
-          viewDepartments();
-          break;
-        case "VAR":
-          viewRoles();
-          break;
-        case "VAE":
-          viewEmployees();
-          break;
-        case "AAD":
-          addDepartment();
-          break;
-        case "AAR":
-          addRole();
-          break;
-        case "AAE":
-          addEmployee();
-          break;
-        case "UEM":
-          updatesEmployeeManager();
-          break;
-        case "UER":
-          updatesEmployeeRole;
-          break;
-        case "DAD":
-          removesDepartment();
-          break;
-        case "DAR":
-          removesRole();
-          break;
-        case "DAE":
-          removesEmployee();
-          break;
-        default:
-          quit();
-      }
+    switch (option) {
+      case "VAD":
+        viewDepartments();
+        break;
+      case "VAR":
+        viewRoles();
+        break;
+      case "VAE":
+        viewEmployees();
+        break;
+      case "AAD":
+        addDepartment();
+        break;
+      case "AAR":
+        addRole();
+        break;
+      case "AAE":
+        addEmployee();
+        break;
+      case "UEM":
+        updatesEmployeeManager();
+        break;
+      case "UER":
+        updatesEmployeeRole;
+        break;
+      case "DAD":
+        removesDepartment();
+        break;
+      case "DAR":
+        removesRole();
+        break;
+      case "DAE":
+        removesEmployee();
+        break;
+      default:
+        quit();
     }
+  }
   )
 }
 
