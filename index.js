@@ -4,6 +4,7 @@ const { prompt } = require('inquirer');
 const { getEmployees, getRoles, createDepartment, createRole, createEmployee, updateEmployeeRole, updateEmployeeManager, removeDepartment, removeRole, removeEmployee } = require('./db');
 require('console.table');
 
+init();
 
 function init () {
   console.log(`WELCOME TO THE MANAGER'S ORGANIZATION DATABASE!`);
@@ -76,37 +77,37 @@ function defaultQuestions() {
 
       switch (option) {
         case "VAD":
-          getEmployees();
+          viewDepartments();
           break;
         case "VAR":
-          getRoles();
+          viewRoles();
           break;
         case "VAE":
-          getEmployees();
+          viewEmployees();
           break;
         case "AAD":
-          createDepartment();
+          addDepartment();
           break;
         case "AAR":
-          createRole();
+          addRole();
           break;
         case "AAE":
-          createEmployee();
+          addEmployee();
           break;
         case "UEM":
-          updateEmployeeManager();
+          updatesEmployeeManager();
           break;
         case "UER":
-          updateEmployeeRole;
+          updatesEmployeeRole;
           break;
         case "DAD":
-          removeDepartment();
+          removesDepartment();
           break;
         case "DAR":
-          removeRole();
+          removesRole();
           break;
         case "DAE":
-          removeEmployee();
+          removesEmployee();
           break;
         default:
           quit();
@@ -143,7 +144,7 @@ function addDepartment() {
 }
 
 // Delete a department
-function removeDepartment() {
+function removesDepartment() {
   db.getDepartments()
     .then(([rows]) => {
       let departments = rows;
@@ -211,7 +212,7 @@ function addRole() {
 }
 
 // Delete a role
-function removeRole() {
+function removesRole() {
   db.getRoles()
     .then(([rows]) => {
       let roles = rows;
@@ -236,7 +237,7 @@ function removeRole() {
 }
 
 // Update an employee's role
-function updateEmployeeRole() {
+function updatesEmployeeRole() {
   db.getEmployees()
     .then(([rows]) => {
       let employees = rows;
@@ -362,7 +363,7 @@ function addEmployee() {
 }
 
 // Delete an employee
-function removeEmployee() {
+function removesEmployee() {
   db.getEmployees()
     .then(([rows]) => {
       let employees = rows;
@@ -386,7 +387,7 @@ function removeEmployee() {
 }
 
 // Update an employee's manager
-function updateEmployeeManager() {
+function updatesEmployeeManager() {
   db.getEmployees()
     .then(([rows]) => {
       let employees = rows;
