@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS orgcharts_db;
-CREATE DATABASE orgcharts_db;
+DROP DATABASE IF EXISTS orgcharts;
+CREATE DATABASE orgcharts;
 
-USE orgcharts_db;
+USE orgcharts;
 
 CREATE TABLE department (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

@@ -1,4 +1,4 @@
-USE orgcharts_db;
+USE orgcharts;
 
 INSERT INTO department (name)
 VALUES ("HR"),
