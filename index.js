@@ -1,43 +1,84 @@
-const express = require('express');
-// Import and require mysql2
+const db = require('./db');
 const mysql = require('mysql2');
-// const console = require('console.table');
+const { prompt } = require('inquirer');
+require('console.table');
 
-const PORT = process.env.PORT || 3001;
-const app = express();
 
-// Express middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+function init () {
+  console.log(`WELCOME TO THE MANAGER'S ORGANIZATION DATABASE!`);
+  defaultQuestions();
+}
 
-// Connect to database
-const db = mysql.createConnection(
-  {
-    host: 'localhost',
-    user: 'root',
-    password: 'KingL10n!820',
-    database: 'orgcharts_db'
-  },
-  console.log(`Connected to the orgcharts_db database.`)
-);
+function defaultQuestions() {
+  console.log(`MANAGER'S ORGANIZATION DATABASE!`);
 
-// // Create a movie
-// app.post('/api/new-movie', ({ body }, res) => {
-//   const sql = `INSERT INTO movies (movie_name)
-//     VALUES (?)`;
-//   const params = [body.movie_name];
-  
-//   db.query(sql, params, (err, result) => {
-//     if (err) {
-//       res.status(400).json({ error: err.message });
-//       return;
-//     }
-//     res.json({
-//       message: 'success',
-//       data: body
-//     });
-//   });
-// });
+  prompt
+  ([
+    {
+      type: "list",
+      name: "choice",
+      message: "What would you like to do?",
+      choices:
+      [
+        {
+          name: "View All Departments",
+          value: "VAD"
+        },
+        {
+          name: "View All Employee Roles",
+          value: "VAR"
+        },   
+        {
+          name: "View All Employees",
+          value: "VAE"
+        },
+        {
+          name: "Add a Department",
+          value: "AAD"
+        },
+        {
+          name: "Add A Role",
+          value: "AAR"
+        },        
+        {
+          name: "Add an Employee",
+          value: "AAE"
+        },
+        {
+          name: "Update an Employee's Role",
+          value: "UPDATE_EMPLOYEE_ROLE"
+        },
+     
+        {
+          name: "",
+          value: ""
+        },        
+        {
+          name: "",
+          value: ""
+        },        
+        {
+          name: "",
+          value: ""
+        },        
+        {
+          name: "",
+          value: ""
+        },        
+        {
+          name: "",
+          value: ""
+        },
+        {
+          name: "",
+          value: ""
+        },       
+      ]
+    }
+  ])
+
+}
+
 
 // // Read all movies
 // app.get('/api/movies', (req, res) => {
@@ -119,17 +160,4 @@ const db = mysql.createConnection(
 //   res.status(404).end();
 // });
 
-DEPARTMENTS:
-SELECT * FROM department;
 
-ROLES:
-SELECT role.id, roles.title, department.name AS department, roles.salary FROM roles JOIN department ON roles.department_id = department.id;
-
-EMPLOYEES:
-SELECT employee.id, employee.first_name, employee.last_name, roles.title, department.name AS department, roles.salary, employee.first_name AS manager FROM employee JOIN roles ON employee.role_id = roles.id JOIN department ON roles.department_id = department.id JOIN employee ON employee.manager_id = employee.id;
-
-
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
