@@ -1,6 +1,7 @@
 const db = require('./db');
 const mysql = require('mysql2');
 const { prompt } = require('inquirer');
+const { getEmployees, getRoles, createDepartment, createRole, createEmployee, updateEmployeeRole, updateEmployeeManager, removeDepartment, removeRole, removeEmployee } = require('./db');
 require('console.table');
 
 
@@ -45,56 +46,78 @@ function defaultQuestions() {
           value: "AAE"
         },
         {
+          name: "Update an Employee's Manager",
+          value: "UEM"
+        },
+        {
           name: "Update an Employee's Role",
-          value: "UPDATE_EMPLOYEE_ROLE"
-        },
-     
-        {
-          name: "",
-          value: ""
-        },        
-        {
-          name: "",
-          value: ""
-        },        
-        {
-          name: "",
-          value: ""
-        },        
-        {
-          name: "",
-          value: ""
-        },        
-        {
-          name: "",
-          value: ""
+          value: "UER"
         },
         {
-          name: "",
-          value: ""
-        },       
+          name: "Delete a Department",
+          value: "DAD"
+        },        
+        {
+          name: "Delete a Role",
+          value: "DAR"
+        },        
+        {
+          name: "Delete an Employee",
+          value: "DAE"
+        },        
+        {
+          name: "Quit",
+          value: "QUIT"
+        }
       ]
     }
-  ])
+  ]).then(res => {
+      let option = res.option;
+
+      switch (option) {
+        case "VAD":
+          getEmployees();
+          break;
+        case "VAR":
+          getRoles();
+          break;
+        case "VAE":
+          getEmployees();
+          break;
+        case "AAD":
+          createDepartment();
+          break;
+        case "AAR":
+          createRole();
+          break;
+        case "AAE":
+          createEmployee();
+          break;
+        case "UEM":
+          updateEmployeeManager();
+          break;
+        case "UER":
+          updateEmployeeRole;
+          break;
+        case "DAD":
+          removeDepartment();
+          break;
+        case "DAR":
+          removeRole();
+          break;
+        case "DAE":
+          removeEmployee();
+          break;
+        default:
+          quit();
+      }
+    }
+  )
 
 }
 
 
-// // Read all movies
-// app.get('/api/movies', (req, res) => {
-//   const sql = `SELECT id, movie_name AS title FROM movies`;
-  
-//   db.query(sql, (err, rows) => {
-//     if (err) {
-//       res.status(500).json({ error: err.message });
-//        return;
-//     }
-//     res.json({
-//       message: 'success',
-//       data: rows
-//     });
-//   });
-// });
+
 
 // // Delete a movie
 // app.delete('/api/movie/:id', (req, res) => {
