@@ -72,7 +72,8 @@ function defaultQuestions() {
         }
       ]
     }
-  ]).then(res => {
+  ]).
+  then(res => {
     let option = res.choice;
 
     switch (option) {
