@@ -276,8 +276,8 @@ function updatesEmployeeRole() {
                 .then(res => db.updateEmployeeRole(employeeId, res.roleId))
                 .then(() => console.log("Updated employee's role"))
                 .then(() => defaultQuestions())
-            });
-        });
+            })
+        })
     })
 }
 
