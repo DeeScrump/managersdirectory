@@ -1,6 +1,6 @@
 const connection = require('./connection');
 
-class DB {
+class orgChart {
 
     constructor(connection) {
         this.connection = connection;
@@ -89,4 +89,4 @@ class DB {
 
 }
 
-module.exports = new DB(connection);
+module.exports = new orgChart(connection);

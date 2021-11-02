@@ -1,7 +1,5 @@
-const db = require('./db');
-const mysql = require('mysql2');
 const { prompt } = require('inquirer');
-// const { getEmployees, getRoles, createDepartment, createRole, createEmployee, updateEmployeeRole, updateEmployeeManager, removeDepartment, removeRole, removeEmployee } = require('./db');
+const db = require('./db');
 require('console.table');
 
 init();
@@ -99,7 +97,7 @@ function defaultQuestions() {
         updatesEmployeeManager();
         break;
       case "UER":
-        updatesEmployeeRole;
+        updatesEmployeeRole();
         break;
       case "DAD":
         removesDepartment();
@@ -276,8 +274,8 @@ function updatesEmployeeRole() {
                 .then(res => db.updateEmployeeRole(employeeId, res.roleId))
                 .then(() => console.log("Updated employee's role"))
                 .then(() => defaultQuestions())
-            })
-        })
+            });
+        });
     })
 }
 
@@ -437,34 +435,5 @@ function quit() {
   console.log("Goodbye!");
   process.exit();
 }
-
-
-
-// // Update review name
-// app.put('/api/review/:id', (req, res) => {
-//   const sql = `UPDATE reviews SET review = ? WHERE id = ?`;
-//   const params = [req.body.review, req.params.id];
-
-//   db.query(sql, params, (err, result) => {
-//     if (err) {
-//       res.status(400).json({ error: err.message });
-//     } else if (!result.affectedRows) {
-//       res.json({
-//         message: 'Movie not found'
-//       });
-//     } else {
-//       res.json({
-//         message: 'success',
-//         data: req.body,
-//         changes: result.affectedRows
-//       });
-//     }
-//   });
-// });
-
-// // Default response for any other request (Not Found)
-// app.use((req, res) => {
-//   res.status(404).end();
-// });
 
 
